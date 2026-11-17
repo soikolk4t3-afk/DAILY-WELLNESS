@@ -1,0 +1,188 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Bricolage Grotesque", "Be Vietnam Pro", system-ui, sans-serif;
+  --font-sans: "Be Vietnam Pro", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  html,
+  body {
+    font-family: var(--font-sans);
+    background-color: #fdf6e9;
+    color: #141413;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+  }
+}
+
+@media (pointer: coarse) {
+  html,
+  body,
+  *,
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar,
+  *::-webkit-scrollbar,
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+}
+
+@media (pointer: fine) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(20, 20, 19, 0.22) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 4px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: rgba(20, 20, 19, 0.22);
+    border-radius: 9999px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(20, 20, 19, 0.4);
+  }
+}
+
+/* Desktop textured dot paper backdrop */
+.zine-backdrop {
+  background-color: #0f5c56;
+  background-image: radial-gradient(rgba(253, 246, 233, 0.18) 1.5px, transparent 1.5px);
+  background-size: 18px 18px;
+}
+
+/* Scrolling Zine Marquee Ticker */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 18s linear infinite;
+  will-change: transform;
+}
+
+/* Snappy Spring Card Entrance */
+@keyframes spring-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-spring-pop {
+  animation: spring-pop 0.38s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Tilted Rubber-Stamp SLAM Animation */
+@keyframes stamp-slam {
+  0% {
+    opacity: 0;
+    transform: scale(2.4) rotate(-14deg);
+  }
+  65% {
+    opacity: 1;
+    transform: scale(0.94) rotate(-4deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-5deg);
+  }
+}
+
+.animate-stamp-slam {
+  animation: stamp-slam 0.42s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Gentle Demo Hint Pulse */
+@keyframes gentle-pulse {
+  0%,
+  100% {
+    opacity: 0.78;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
+.animate-gentle-hint {
+  animation: gentle-pulse 2.2s ease-in-out infinite;
+}
+
+/* CSS Serrated / Perforated Thermal Paper Edge */
+.serrated-top {
+  background-image: linear-gradient(135deg, #fdf6e9 50%, transparent 50%),
+    linear-gradient(225deg, #fdf6e9 50%, transparent 50%);
+  background-position: top left;
+  background-size: 12px 12px;
+  background-repeat: repeat-x;
+}
+
+.serrated-bottom {
+  background-image: linear-gradient(315deg, #fdf6e9 50%, transparent 50%),
+    linear-gradient(45deg, #fdf6e9 50%, transparent 50%);
+  background-position: bottom left;
+  background-size: 12px 12px;
+  background-repeat: repeat-x;
+}
+
+/* Spotlight Tutorial Cutout Pulse */
+@keyframes spotlight-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 209, 102, 0.85);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(255, 209, 102, 0.2);
+  }
+}
+
+.animate-spotlight-pulse {
+  animation: spotlight-pulse 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-spring-pop,
+  .animate-stamp-slam,
+  .animate-gentle-hint,
+  .animate-spotlight-pulse {
+    animation: none;
+  }
+}
